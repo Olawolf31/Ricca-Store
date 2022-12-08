@@ -4,18 +4,15 @@ import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import OurStore from "./pages/OurStore";
 import Contact from "./pages/Contact";
-import {useEffect} from 'react'
-import {useDispatch, useSelector} from "react-redux"
-import {getCartItems} from './features/cart/CartSlice'
+import { useEffect } from "react";
+import { useDispatch} from "react-redux";
+import { productsData } from "./features/cart/CartSlice";
 
 function App() {
-
-
-
-const dispatch = useDispatch()
-useEffect(() => {
-  dispatch(getCartItems())
-}, [dispatch])
+   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(productsData());
+  }, [dispatch]); 
 
   return (
     <>

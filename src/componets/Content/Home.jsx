@@ -2,34 +2,28 @@ import React from "react";
 import HeroSlider from "../Hero/HeroSlider";
 import { useSelector } from "react-redux";
 
+
 const Home = () => {
+  const { cartItems, isLoading } = useSelector((store) => store.cart);
+  console.log(cartItems, isLoading);
 
-/* 
-  const {cartItems, count, isLoading} = useSelector((store) => store.cart) */
 
- 
-  const { cartItems,} = useSelector((store) => store.cart);
-console.log(cartItems)
 
   return (
     <div>
       <HeroSlider />
-    
+
       {cartItems.map((item) => {
-        return(
+        return (
           <>
-          {item.title}
-          sjs
+            {item.title}
+            sjs
           </>
-        )
+        );
       })}
       <section className="bg-white dark:bg-gray-900">
         <div className="pt-8 px-4 mx-auto max-w-screen-xl text-center lg:pt-16 lg:px-12">
-          <div
-           
-            className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
-            
-          >
+          <div className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
             <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">
               New
             </span>
@@ -86,8 +80,6 @@ console.log(cartItems)
                   <span className="mx-1">Add to cart</span>
                 </button>
               </div>
-
-        
             </div>
           </div>
         </div>
