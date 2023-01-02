@@ -3,14 +3,19 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { RiMenu4Fill } from "react-icons/ri";
 import { CgShoppingCart } from "react-icons/cg";
+import { useSelector } from "react-redux";
 
 //cart icon
 export const CartIcon = () => {
+  const {productCount} = useSelector((store) => store.cart)
+
+ 
+
   return (
     <div className="relative">
       <CgShoppingCart className="w-8 h-8 relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300" />
       <span className="absolute top-0 left-0 px-1 text-xs text-white bg-blue-500 rounded-full">
-        0
+        {productCount}
       </span>
     </div>
   );
@@ -19,6 +24,8 @@ export const CartIcon = () => {
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  
+ 
   return (
     <nav
       className={`relative bg-black shadow ${isOpen ? "dark:bg-gray-800" : ""}`}
