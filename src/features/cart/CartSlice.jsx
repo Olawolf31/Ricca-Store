@@ -57,7 +57,7 @@ const CartSlice = createSlice({
       state.productCount -= 1
       state.total -= price;
     },
-    clearAllCart: (state, action) => {
+    clearAllCart: (state) => {
       state.cartItems = []
       state.productCount = 0
     }
@@ -70,11 +70,11 @@ const CartSlice = createSlice({
       .addCase(productsData.fulfilled, (state, action) => {
         state.isLoading = false;
         state.products = action.payload;
-        console.log(action);
+       /*  console.log(action); */
       })
       .addCase(productsData.rejected, (state, action) => {
         state.isLoading = false;
-        console.log(action);
+        /* console.log(action); */
       });
   },
 });

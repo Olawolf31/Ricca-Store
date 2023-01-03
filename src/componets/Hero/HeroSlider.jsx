@@ -21,7 +21,6 @@ const HeroSlider = () => {
         slidesPerView={1}
         navigation={true}
         loop={true}
-       /*  className="h-4/6 overflow-hidden flex flex-nowrap text-center" */
         style={{
           "--swiper-navigation-color": "#fff",
           "--swiper-navigation-size": "20px",
@@ -29,19 +28,22 @@ const HeroSlider = () => {
       >
         {heroData.map((slider) => {
           return (
-            <SwiperSlide key={slider.id} className={slider.className}>
-              <h2 className="text-4xl max-w-md">{slider.title}</h2>
-              <p className="max-w-md">{slider.description}</p>
+            <SwiperSlide
+              key={slider.id}
+              className={`${slider.className} color-overlay`}
+              style={{
+                backgroundImage: `url(${slider.url})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundColor: "black",
+              }}
+            >
+              <h2 className="text-center text-4xl font-bold bright-white">{slider.title}</h2>
+              <p className="text-2xl bright-white">{slider.description}</p>
             </SwiperSlide>
           );
         })}
       </Swiper>
-
-
-
-
-
-
     </div>
   );
 };

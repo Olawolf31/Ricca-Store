@@ -15,13 +15,7 @@ const Footer = () => {
                 <span>Plus free shipping! Use code:</span>
                 <span className="font-bold text-lg">MAMBA</span>
               </div>
-              <a
-                href="#"
-                rel="noreferrer noopener"
-                className="px-5 mt-4 lg:mt-0 py-3 rounded-md border block dark:bg-gray-50 dark:text-gray-900 dark:border-gray-400"
-              >
-                Shop Now
-              </a>
+              
             </div>
           </div>
         </div>
