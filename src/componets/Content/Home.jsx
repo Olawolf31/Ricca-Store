@@ -10,13 +10,9 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(productsData());
-  }, [dispatch]);  
+  }, [dispatch]);
 
   const { products, isLoading } = useSelector((store) => store.cart);
- /*  console.log(cartItems, isLoading); */
-
-  //dispatch addToCart Button
-/*   const dispatch = useDispatch()  */
 
   return (
     <div>
@@ -28,9 +24,7 @@ const Home = () => {
             <span className="text-xs bg-primary-600 rounded-full text-white px-4 py-1.5 mr-3">
               New
             </span>
-            <span className="text-sm font-medium">
-              Flowbite is out! See what's new
-            </span>
+            <span className="text-sm font-medium">Iphone 15 Pro is Out!</span>
             <svg
               className="ml-2 w-5 h-5"
               fill="currentColor"
@@ -47,14 +41,15 @@ const Home = () => {
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             We invest in the world’s potential
           </h1>
-          <p className="mb-18 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Here at Flowbite we focus on markets where technology, innovation,
-            and capital can unlock long-term value and drive economic growth.
+          <p className="mb-18 text-lg font-normal text-white-500 lg:text-xl sm:px-16 xl:px-48 dark:text-white-400">
+            Here at Ricca Store we focus on markets where technology,
+            innovation, and capital can unlock long-term value and drive
+            economic growth.
           </p>
         </div>
       </section>
 
-      <section className="pb-20 dark:bg-gray-900">
+      <section className="pb-10 dark:bg-gray-900">
         <div className="container px-6 py-8 mx-auto">
           <div className="mt-6 lg:mt-0 lg:px-2">
             <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -68,13 +63,18 @@ const Home = () => {
                       className="object-cover w-full rounded-md h-72 xl:h-80"
                       src={items.thumbnail}
                       alt={items.title}
-                    /> 
+                    />
                     <h4 className="mt-4 mb-2 text-center text-md font-bold text-gray-700 dark:text-gray-200">
                       {items.title}
                     </h4>
-                    <p className="text-blue-500 mt-4 mb-4 font-extrabold">€{items.price}</p>
+                    <p className="text-blue-500 mt-4 mb-4 font-extrabold">
+                      €{items.price}
+                    </p>
 
-                    <button onClick={() =>  console.log(dispatch(addToCart(items)))} className="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                    <button
+                      onClick={() => console.log(dispatch(addToCart(items)))}
+                      className="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-5 h-5 mx-1"

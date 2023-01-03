@@ -15,7 +15,7 @@ const initialState = {
 
 export const productsData = createAsyncThunk("cart/productsData", async () => {
   try {
-    const response = await axios.get(`${url}?limit=12`);
+    const response = await axios.get(`${url}?limit=20`);
     const apiProducts = await response.data;
     return apiProducts.products;
   } catch (error) {
