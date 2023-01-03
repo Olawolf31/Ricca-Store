@@ -51,8 +51,11 @@ const CartSlice = createSlice({
     },
     removeCart: (state, action) => {
       const itemID = action.payload;
+      const item = state.cartItems.find((item) => item.id === itemID);
+      const price = item ? item.price : 0;
       state.cartItems = state.cartItems.filter((item) => item.id !== itemID);
       state.productCount -= 1
+      state.total -= price;
     },
   },
   extraReducers: (builder) => {
@@ -72,7 +75,7 @@ const CartSlice = createSlice({
   },
 });
 
-/*  console.log(CartSlice);  */
+
 
 export const { addToCart, removeCart } = CartSlice.actions;
 

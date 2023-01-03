@@ -2,17 +2,21 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { removeCart } from "../../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
-const Cart = ({ setOpenCart }) => {
+const Cart = ({ setOpenCart, openCart }) => {
   const { cartItems, total } = useSelector((store) => store.cart);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return (
     <>
       <div className="flex flex-col w-full p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
         <h2 className="text-xl font-semibold">Your cart</h2>
         <ul className="flex flex-col divide-y divide-gray-700">
           {cartItems.map((item) => (
-            <li key={item.id} className="flex flex-col py-6 sm:flex-row sm:justify-between">
+            <li
+              key={item.id}
+              className="flex flex-col py-6 sm:flex-row sm:justify-between"
+            >
               <div className="flex w-full space-x-2 sm:space-x-4">
                 <img
                   className="flex-shrink-0 object-cover w-5 h-5 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
@@ -58,31 +62,41 @@ const Cart = ({ setOpenCart }) => {
             </li>
           ))}
         </ul>
-        <div className="space-y-1 text-right">
-          <p>
-            Total amount:
-            <span className="font-semibold"> €{total}</span>
-          </p>
-          <p className="text-sm dark:text-gray-400">
-            Not including taxes and shipping costs
-          </p>
-        </div>
-        <div className="flex justify-end space-x-4">
-          <button
-            type="button"
-            onClick={() => setOpenCart(false)}
-            className="px-6 py-2 border rounded-md dark:border-violet-400"
-          >
-            Back
-            <span className="sr-only sm:not-sr-only"> to shop</span>
-          </button>
-          <button
-            type="button"
-            className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400"
-          >
-            <span className="sr-only sm:not-sr-only">Place Order</span>
-          </button>
-        </div>
+        <>
+          <div className="space-y-1 text-right">
+            {cartItems.length >= 1 ? (
+              <>
+                <p>
+                  Total amount:
+                  <span className="font-semibold"> €{total}</span>
+                </p>
+                <p className="text-sm dark:text-gray-400">
+                  Not including taxes and shipping costs
+                </p>
+              </>
+            ) : (
+              "Cart is Empty"
+            )}
+          </div>
+          <div className="flex justify-end space-x-4">
+            <button
+              type="button"
+              onClick={() => setOpenCart(false)}
+              className="px-6 py-2 border rounded-md dark:border-violet-400"
+            >
+              Back
+              <span className="sr-only sm:not-sr-only"> to shop</span>
+            </button>
+            {cartItems.length >= 1 && (
+              <button
+                type="button"
+                className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400"
+              >
+                <span className="sr-only sm:not-sr-only"> Place Order</span>
+              </button>
+            )}
+          </div>
+        </>
       </div>
     </>
   );
