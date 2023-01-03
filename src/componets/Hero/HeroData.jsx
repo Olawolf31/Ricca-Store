@@ -3,7 +3,7 @@ export const heroData = [
     id: 1,
     url: "https://pixabay.com/get/ge8f4e988446ce9d9f6d74587092d32bca8aee90d98e57d5c2c8c3ba8f06e89e4e0d52958354eb01c5cb67eb0bcd0b7ff68735f137afa5a4fea937b060dc0e34e01d1669a823e86ce161aaeb74d1a45ee_1920.jpg",
     title: "Get the latest and greatest smartphones at our store!",
-    description: "Stay connected with the latest technology",
+    description: "Stay connected with the latest technology in 2023",
     className:
       "py-60 space-y-4 flex-none w-full flex flex-col items-center justify-center",
   },
