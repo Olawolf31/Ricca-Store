@@ -13,19 +13,22 @@ export const CartIcon = () => {
   return (
     <div className="relative">
       <div
-     
         className={`${
           openCart ? "block" : "hidden"
         } fixed right-0 h-screen max-w-3xl overflow-y-auto z-10 lg:inset-y-6 sm:inset-y-12`}
       >
-        <Cart setOpenCart={setOpenCart} openCart={openCart}/>
+        <Cart setOpenCart={setOpenCart} openCart={openCart} />
       </div>
 
       <CgShoppingCart
         onClick={() => setOpenCart(!openCart)}
         className="w-8 h-8 relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300 cursor-pointer"
       />
-      <span className="absolute top-0 left-0 px-1 text-xs text-white bg-blue-500 rounded-full">
+      <span
+        className={`absolute top-0 left-0 px-1 text-xs text-white bg-blue-500 rounded-full ${
+          productCount > 0 ? "animate-bounce duration-500 iteration-count-2" : ""
+        }`}
+      >
         {productCount}
       </span>
     </div>
@@ -37,7 +40,9 @@ const Nav = () => {
 
   return (
     <nav
-      className={` bg-black shadow fixed top-0 left-0 right-0 z-10 ${isOpen ? "dark:bg-gray-800" : ""}`}
+      className={` bg-black shadow fixed top-0 left-0 right-0 z-10 ${
+        isOpen ? "dark:bg-gray-800" : ""
+      }`}
     >
       <div className="container px-6 py-6 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">

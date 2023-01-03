@@ -54,11 +54,11 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
+      <section className="pb-20 dark:bg-gray-900">
         <div className="container px-6 py-8 mx-auto">
           <div className="mt-6 lg:mt-0 lg:px-2">
             <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {products.map((items) => {
+              {products.slice(0, 4).map((items) => {
                 return (
                   <div
                     key={items.id}
