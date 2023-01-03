@@ -3,13 +3,20 @@ import HeroSlider from "../Hero/HeroSlider";
 import { addToCart } from "../../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { productsData } from "../../features/cart/CartSlice";
+import { useEffect } from "react";
 
 const Home = () => {
-  const { cartItems, isLoading } = useSelector((store) => store.cart);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(productsData());
+  }, [dispatch]);  
+
+  const { products, isLoading } = useSelector((store) => store.cart);
  /*  console.log(cartItems, isLoading); */
 
   //dispatch addToCart Button
-  const dispatch = useDispatch()
+/*   const dispatch = useDispatch()  */
 
   return (
     <div>
@@ -51,7 +58,7 @@ const Home = () => {
         <div className="container px-6 py-8 mx-auto">
           <div className="mt-6 lg:mt-0 lg:px-2">
             <div className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {cartItems.map((items) => {
+              {products.map((items) => {
                 return (
                   <div
                     key={items.id}
@@ -65,9 +72,9 @@ const Home = () => {
                     <h4 className="mt-4 mb-2 text-center text-md font-bold text-gray-700 dark:text-gray-200">
                       {items.title}
                     </h4>
-                    <p className="text-blue-500 mt-4 mb-4 font-extrabold">${items.price}</p>
+                    <p className="text-blue-500 mt-4 mb-4 font-extrabold">€{items.price}</p>
 
-                    <button onClick={() =>  console.log(dispatch(addToCart(items.id)))} className="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                    <button onClick={() =>  console.log(dispatch(addToCart(items)))} className="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-5 h-5 mx-1"

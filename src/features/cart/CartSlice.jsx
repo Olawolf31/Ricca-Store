@@ -7,6 +7,7 @@ const url = "https://dummyjson.com/products";
 
 const initialState = {
   cartItems: [],
+  products: [],
   productCount: 0,
   total: 0,
   isLoading: true,
@@ -27,20 +28,32 @@ const CartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      
-      // Check if the product is already in the cart
-      const productExists = state.cartItems.find(item => item.id === action.payload.id);
+      // Check if the item is already in the cart
+      const existingItem = state.cartItems.find(
+        (item) => item.id === action.payload.id
+      );
 
-      if (!productExists) {
-        // If the product is not in the cart, increment the product count and add the product to the cart
-        state.productCount++;
+      if (existingItem) {
+        // Update the quantities and total for the existing item
+        existingItem.quantity += 1;
+        state.total += action.payload.price;
+      } else {
+        // Add the new item to the cart
+        state.cartItems.push({
+          ...action.payload,
+          quantity: 1,
+        });
 
+        // Increment the product count and update the total
+        state.productCount += 1;
+        state.total += action.payload.price;
       }
-
-      // If the product is already in the cart, return the state without modifying it
-      return state;
-    }
-    
+    },
+    removeCart: (state, action) => {
+      const itemID = action.payload;
+      state.cartItems = state.cartItems.filter((item) => item.id !== itemID);
+      state.productCount -= 1
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,7 +62,7 @@ const CartSlice = createSlice({
       })
       .addCase(productsData.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cartItems = action.payload;
+        state.products = action.payload;
         console.log(action);
       })
       .addCase(productsData.rejected, (state, action) => {
@@ -61,6 +74,6 @@ const CartSlice = createSlice({
 
 /*  console.log(CartSlice);  */
 
-export const { addToCart } = CartSlice.actions;
+export const { addToCart, removeCart } = CartSlice.actions;
 
 export default CartSlice.reducer;

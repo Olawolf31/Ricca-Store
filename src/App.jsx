@@ -4,15 +4,10 @@ import Homepage from "./pages/Homepage";
 import About from "./pages/About";
 import OurStore from "./pages/OurStore";
 import Contact from "./pages/Contact";
-import { useEffect } from "react";
-import { useDispatch} from "react-redux";
-import { productsData } from "./features/cart/CartSlice";
+
 
 function App() {
-   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(productsData());
-  }, [dispatch]); 
+
 
   return (
     <>
@@ -22,6 +17,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="products" element={<OurStore />} />
           <Route path="contact" element={<Contact />} />
+         
         </Route>
       </Routes>
     </>
