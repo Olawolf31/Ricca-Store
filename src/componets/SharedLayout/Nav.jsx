@@ -17,7 +17,7 @@ export const CartIcon = () => {
           openCart ? "block" : "hidden"
         } fixed right-0 h-screen max-w-3xl overflow-y-auto z-10 lg:inset-y-6 sm:inset-y-12`}
       >
-        <Cart setOpenCart={setOpenCart} openCart={openCart} />
+        <Cart setOpenCart={setOpenCart}/>
       </div>
 
       <CgShoppingCart

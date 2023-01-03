@@ -2,11 +2,20 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { removeCart } from "../../features/cart/CartSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { openModal } from "../../features/modal/ModalSlice";
+import { clearAllCart } from "../../features/cart/CartSlice";
 
-const Cart = ({ setOpenCart, openCart }) => {
+const Cart = ({ setOpenCart }) => {
   const { cartItems, total } = useSelector((store) => store.cart);
   const dispatch = useDispatch();
+
+  //trigger Modal whe order is placed
+
+  const triggerModal = () => {
+    dispatch(openModal());
+    dispatch(clearAllCart())
+    setOpenCart(false);
+  };
   return (
     <>
       <div className="flex flex-col w-full p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
@@ -89,6 +98,7 @@ const Cart = ({ setOpenCart, openCart }) => {
             </button>
             {cartItems.length >= 1 && (
               <button
+                onClick={triggerModal}
                 type="button"
                 className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400"
               >

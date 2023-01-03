@@ -1,9 +1,23 @@
 import React from 'react'
+import { createSlice } from '@reduxjs/toolkit'
 
-const ModalSlice = () => {
-  return (
-    <div>ModalSlice</div>
-  )
+const initialState = {
+  isOpen: false
 }
 
-export default ModalSlice
+const ModalSlice = createSlice({
+  name: "checkoutmodal",
+  initialState,
+  reducers: {
+    openModal: (state) => {
+      state.isOpen = true
+    },
+    closeModal: (state) => {
+      state.isOpen = false
+    }
+  }
+})
+
+export const { openModal, closeModal } = ModalSlice.actions;
+
+export default ModalSlice.reducer;
