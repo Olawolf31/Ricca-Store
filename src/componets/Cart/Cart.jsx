@@ -102,7 +102,7 @@ const Cart = ({ setOpenCart }) => {
                 type="button"
                 className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400"
               >
-                <span className="sr-only sm:not-sr-only"> Place Order</span>
+                Place Order
               </button>
             )}
           </div>
