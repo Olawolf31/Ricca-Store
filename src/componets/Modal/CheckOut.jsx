@@ -27,7 +27,7 @@ const CheckOut = () => {
                             </div>
                         </div>
                         <div className="items-center gap-2 mt-3 sm:flex">
-                            <button className="w-1/2 mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2"
+                            <button className="w-full mt-2 p-2.5 flex-1 text-white bg-indigo-600 rounded-md outline-none ring-offset-2 ring-indigo-600 focus:ring-2"
                                 onClick={() => dispatch(closeModal())}
                             >
                                 Back to Shop

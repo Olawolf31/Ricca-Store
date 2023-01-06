@@ -38,8 +38,8 @@ const HeroSlider = () => {
                 backgroundColor: "black",
               }}
             >
-              <h2 className="text-center lg:text-4xl md:text-3xl font-bold bright-white sm:text-2xl">{slider.title}</h2>
-              <p className="text-center text-2xl bright-white">{slider.description}</p>
+              <h2 className="text-center text-4xl font-bold bright-white">{slider.title}</h2>
+              <p className="text-center text-xl bright-white">{slider.description}</p>
             </SwiperSlide>
           );
         })}
